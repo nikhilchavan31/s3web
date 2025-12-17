@@ -1,0 +1,64 @@
+instraction 
+2️⃣ Create S3 Bucket
+
+Log in to AWS Console → S3 → Create Bucket
+
+Bucket Name: must be unique, e.g., my-static-website-demo
+
+Region: nearest to your users
+
+Public access: Uncheck Block all public access → acknowledge warning
+
+Click Create bucket
+
+3️⃣ Upload Website Files
+
+Open your bucket → Upload
+
+Add all files from your folder:
+
+index.html
+
+style.css
+
+script.js
+
+Click Upload
+
+Set Bucket Policy for Public Access
+
+Go to Permissions → Bucket Policy
+
+Paste this policy (replace YOUR_BUCKET_NAME):
+
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "PublicReadGetObject",
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::YOUR_BUCKET_NAME/*"
+    }
+  ]
+}
+
+
+Save changes
+
+5️⃣ Enable Static Website Hosting
+
+Go to Properties → Static website hosting
+
+Select Enable
+
+Index document: index.html
+
+Error document (optional): error.html
+
+Save changes
+
+You will get Website Endpoint URL, e.g.:
+
+http://my-static-website-demo.s3-website-us-east-1.amazonaws.com
